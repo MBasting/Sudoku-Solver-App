@@ -15,8 +15,7 @@ gen/
 out/
 release/
 .idea/
-openCVLibrary343/
-*jniLibs/
+sdk/
 
 # Gradle files
 .gradle/
