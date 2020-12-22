@@ -25,6 +25,9 @@ import com.example.cameracodeexample.Fragments.MainFragment;
 import com.example.cameracodeexample.Fragments.SolveFragment;
 import com.example.cameracodeexample.utils.DataBaseHandler;
 
+import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Fragment fragment = new MainFragment();
         loadFragment(fragment);
+        OpenCVLoader.initDebug();
 //        setContentView(R.layout.camera_fragment);
 //        camera = this.findViewById(R.id.my_rounded_button);
 //        text1 = this.findViewById(R.id.text1);
@@ -144,47 +148,6 @@ public class MainActivity extends AppCompatActivity {
 //        byte[] imageArr = os.toByteArray();
 //        return Base64.encodeToString(imageArr, Base64.URL_SAFE);
 //    }
-
-
-    /** Method to call python function and read the command line for the result.
-     *
-     * @param location location of the image to be analysed
-     * @return Sudoku in int[][] form.
-     * @throws IOException if python file is not playable.
-     */
-    public int[][] solveSudoku(String location) throws IOException {
-        try {
-            // solveSudoku.py should take the image from the stored Location and try to solve it.
-            Process p = Runtime.getRuntime().exec("python solveSudoku.py " + location);
-            BufferedReader stdInput = new BufferedReader(new
-                    InputStreamReader(p.getInputStream()));
-            String row = null;
-            // First line returned is a status code
-            row = stdInput.readLine();
-            if (row == null || row.contains("1")) {
-                return null;
-            }
-            // Read output of Python to Double array;
-            int[][] sudoku = new int[9][9];
-            int counter = 0;
-            while ((row = stdInput.readLine()) != null) {
-                String[] numbers = row.split(",");
-                if (numbers.length > 9) {
-                    System.out.println("Incorrect format");
-                    return null;
-                }
-                for (int i = 0; i < numbers.length; i++) {
-                    sudoku[counter][i] = Integer.parseInt(numbers[i]);
-                }
-                counter++;
-            }
-            return sudoku;
-
-        } catch (IOException e) {
-            System.out.println("Python file not found or not executable!");
-            return null;
-        }
-    }
 
 
 

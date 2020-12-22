@@ -16,10 +16,6 @@ import static org.opencv.core.CvType.*;
 
 public class Scanner {
     // Array with saved numbers used for recognition.
-    private static TNumber[] numbers;
-
-    // Loading of CV2 library
-    static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 
 //    public static void main(String[] args) throws IOException {
 //        System.out.println("Welcome to OpenCV " + Core.VERSION);
@@ -32,36 +28,6 @@ public class Scanner {
 //
 ////        String result = scanImage("Resources/test_images/test_1.jpg");
 //    }
-
-    /** Puts all reference images needed for later recognition in an array
-     *  Every element consists of an image of the number, corresponding number and amount of pixels
-     *
-     * @return Array of Elements(image as Mat, number, amount of pixels)
-     */
-    public static TNumber[] getNumbers()  {
-        File path = new File("Resources/numbers");
-        TNumber[] tNumber = new TNumber[9];
-        File [] files = path.listFiles();
-        if (files != null) {
-            for (int i = 0; i < files.length; i++){
-                if (files[i].isFile()){ //this line weeds out other directories/folders
-                    File temp = files[i];
-                    String p = temp.getPath();
-                    int name = Integer.parseInt(String.valueOf(temp.getName().charAt(0)));
-                    Mat img = Imgcodecs.imread(p);
-                    Imgproc.cvtColor(img, img, Imgproc.COLOR_BGR2GRAY);
-                    // To calculate the number of pixels active we need to count the white pixels
-                    // So the image needs to be inverted before calculating.
-                    Core.bitwise_not(img, img);
-                    Scalar sum = Core.sumElems(img);
-                    int s = (int) sum.val[0];
-                    tNumber[i] = new TNumber(img, name, s);
-                    System.out.println("Path: " + p + "  Name: " + name + "  sum: " + s);
-                }
-            }
-        }
-        return tNumber;
-    }
 
 
     /** Prepares the image for recognition by converting to gray scaling and rescaling (speed up)
@@ -178,14 +144,14 @@ public class Scanner {
      *                         Each Isolated_Number consists of its position in the sudoku and the ROI.
      * @return Recognized Sudoku as double int array.
      */
-    public static int[][] recognize_set(List<Isolated_Number> Isolated_Numbers) {
+    public static int[][] recognize_set(List<Isolated_Number> Isolated_Numbers, TNumber[] tNumbers) {
         int[][] sudoku = new int[9][9];
         // Prepare the array by setting all values to zero.
         for (int[] ints : sudoku) {
             Arrays.fill(ints, 0);
         }
         for (Isolated_Number numb: Isolated_Numbers) {
-            int label = recognize(numb.roi);
+            int label = recognize(numb.roi, tNumbers);
             sudoku[numb.y][numb.x] = label;
         }
         return sudoku;
@@ -197,7 +163,7 @@ public class Scanner {
      * @param num image of the separate number as Mat.
      * @return calculate value of the num as int, zero if Mat was not a valid size.
      */
-    public static int recognize(Mat num) {
+    public static int recognize(Mat num, TNumber[] numbers) {
         if (num == null) {
             return 0;
         }
@@ -233,15 +199,15 @@ public class Scanner {
      * @param path Path to the to be recognized sudoku (doesn't have to be isolated sudoku);
      * @return Sudoku as double int array.
      */
-    public static int[][] scan(String path) {
+    public static int[][] scan(String path, TNumber[] numbers) {
+        System.out.println(path);
         Mat img = Imgcodecs.imread(path);
-        numbers = getNumbers();
         prepare(img);
         // Extract the numbers from the taken picture
         Mat sudoku = isolateSudoku(img);
         List<Isolated_Number> Isolated_Numbers = isolatenumbers(sudoku);
 
-        return recognize_set(Isolated_Numbers);
+        return recognize_set(Isolated_Numbers, numbers);
     }
 
 

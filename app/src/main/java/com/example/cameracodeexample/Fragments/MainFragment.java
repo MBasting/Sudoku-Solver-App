@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +27,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cameracodeexample.MainActivity;
 import com.example.cameracodeexample.R;
+import com.example.cameracodeexample.calc.Scanner;
+import com.example.cameracodeexample.calc.Solver;
+import com.example.cameracodeexample.calc.TNumber;
 import com.example.cameracodeexample.utils.DataBaseHandler;
+import com.squareup.picasso.Picasso;
+
+import org.opencv.android.Utils;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -35,7 +50,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class MainFragment extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
@@ -48,6 +63,35 @@ public class MainFragment extends Fragment {
     DataBaseHandler databaseHandler;
     private SQLiteDatabase db;
     Bitmap theImage;
+    TNumber[] tNumbers;
+
+    /** Puts all reference images needed for later recognition in an array
+     *  Every element consists of an image of the number, corresponding number and amount of pixels
+     *
+     * @return Array of Elements(image as Mat, number, amount of pixels)
+     */
+    public void setNumbers() throws IOException {
+        AssetManager assetManager = getActivity().getAssets();
+        tNumbers = new TNumber[9];
+        for (int i = 0; i < 9; i++){
+//                    File temp = files[i];
+//                    String p = temp.getPath();
+//                    int name = Integer.parseInt(String.valueOf(temp.getName().charAt(0)));
+                Mat img = new Mat();
+                String file = i + 1 + ".png";
+                InputStream istr = assetManager.open(file);
+                Bitmap bitmap = BitmapFactory.decodeStream(istr);
+                Utils.bitmapToMat(bitmap, img);
+
+                Imgproc.cvtColor(img, img, Imgproc.COLOR_BGR2GRAY);
+                // To calculate the number of pixels active we need to count the white pixels
+                // So the image needs to be inverted before calculating.
+                Core.bitwise_not(img, img);
+                Scalar sum = Core.sumElems(img);
+                int s = (int) sum.val[0];
+                tNumbers[i] = new TNumber(img, i+1, s);
+        }
+    }
 
 
 
@@ -59,7 +103,12 @@ public class MainFragment extends Fragment {
         text = view.findViewById(R.id.my_rounded_button);
         text1 = view.findViewById(R.id.text1);
         databaseHandler = new DataBaseHandler(getContext());
-
+        try {
+            setNumbers();
+        } catch (IOException e) {
+            System.out.println("Something went wrong trying to load reference images");
+            e.printStackTrace();
+        }
         text.setOnClickListener(
                 new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -166,9 +215,13 @@ public class MainFragment extends Fragment {
                 theImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                 outputStream.flush();
                 outputStream.close();
+                System.out.println();
+                File file1 = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, "test_1.jpg");
+                int[][] sud = getSudoku(file1, tNumbers);
+                int[][] sol = Solver.solve(sud);
+                System.out.println(Arrays.deepToString(sol));
                 int number = 11;
 
-                callPythonFunction("hello.py");
                 // Code to set the content of a editText field.
                 Class res = R.id.class;
                 Field field = res.getField("number"+number);
@@ -183,69 +236,15 @@ public class MainFragment extends Fragment {
         }
     }
 
+    private static int[][] getSudoku(File file, TNumber[] tNumbers) {
+        int[][] sud = Scanner.scan(file.getAbsolutePath(), tNumbers);
+        return sud;
+    }
+
     private String getEncodedString(Bitmap bitmap) {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
         byte[] imageArr = os.toByteArray();
         return Base64.encodeToString(imageArr, Base64.URL_SAFE);
-    }
-
-    private int[][] callPythonFunction(String fileName) {
-        try {
-            ProcessBuilder processBuilder = new ProcessBuilder("python", resolvePythonScriptPath("com/example/cameracodeexample/hello.py"));
-            processBuilder.redirectErrorStream(true);
-            Process process = processBuilder.start();
-            int[][] results = readProcessOutput(process.getInputStream());
-            int exitCode = process.waitFor();
-            if (exitCode == 0) {
-                System.out.println("Something went wrong");
-                return null;
-            }
-            else {
-                return results;
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private String resolvePythonScriptPath(String filename) {
-        File file = new File("src/main/java/com/example/cameracodeexample/" + filename);
-        return file.getAbsolutePath();
-    }
-
-    public int[][] readProcessOutput(InputStream e) {
-        int[][] sudoku = new int[9][9];
-        Scanner sc = new Scanner(e);
-        int indexRow = 0;
-        int indexColumn = 0;
-        while (sc.hasNext() && indexRow < 9) {
-            if (indexColumn >= 9) {
-                indexColumn = 0;
-                indexRow++;
-            }
-            sudoku[indexRow][indexColumn] = sc.nextInt();
-            indexColumn++;
-        }
-        return sudoku;
-    }
-
-
-
-    private String calculateSudoku(String fileName) {
-        try {
-            String prg = "import sys";
-            BufferedWriter out = new BufferedWriter(new FileWriter("path/a.py"));
-            out.write(prg);
-            out.close();
-            // Python script should write the sudoku result to a txt file.
-            String result = "result.txt";
-            Process p = Runtime.getRuntime().exec("python path/a.py " + fileName + result);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
