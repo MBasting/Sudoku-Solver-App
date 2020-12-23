@@ -200,14 +200,15 @@ public class Scanner {
      * @return Sudoku as double int array.
      */
     public static int[][] scan(String path, TNumber[] numbers) {
-        System.out.println(path);
         Mat img = Imgcodecs.imread(path);
         prepare(img);
         // Extract the numbers from the taken picture
         Mat sudoku = isolateSudoku(img);
-        List<Isolated_Number> Isolated_Numbers = isolatenumbers(sudoku);
-
-        return recognize_set(Isolated_Numbers, numbers);
+        if (sudoku != null) {
+            List<Isolated_Number> Isolated_Numbers = isolatenumbers(sudoku);
+            return recognize_set(Isolated_Numbers, numbers);
+        }
+        return null;
     }
 
 

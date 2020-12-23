@@ -17,39 +17,36 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.res.ResourcesCompat;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cameracodeexample.MainActivity;
 import com.example.cameracodeexample.R;
 import com.example.cameracodeexample.calc.Scanner;
 import com.example.cameracodeexample.calc.Solver;
 import com.example.cameracodeexample.calc.TNumber;
 import com.example.cameracodeexample.utils.DataBaseHandler;
-import com.squareup.picasso.Picasso;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Scalar;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
-import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.util.Arrays;
 
 public class MainFragment extends Fragment {
@@ -63,12 +60,13 @@ public class MainFragment extends Fragment {
     DataBaseHandler databaseHandler;
     private SQLiteDatabase db;
     Bitmap theImage;
-    TNumber[] tNumbers;
+    static TNumber[] tNumbers;
+    EditText[] editTexts;
+
 
     /** Puts all reference images needed for later recognition in an array
      *  Every element consists of an image of the number, corresponding number and amount of pixels
      *
-     * @return Array of Elements(image as Mat, number, amount of pixels)
      */
     public void setNumbers() throws IOException {
         AssetManager assetManager = getActivity().getAssets();
@@ -218,16 +216,12 @@ public class MainFragment extends Fragment {
                 System.out.println();
                 File file1 = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, "test_1.jpg");
                 int[][] sud = getSudoku(file1, tNumbers);
-                int[][] sol = Solver.solve(sud);
-                System.out.println(Arrays.deepToString(sol));
-                int number = 11;
-
-                // Code to set the content of a editText field.
-                Class res = R.id.class;
-                Field field = res.getField("number"+number);
-                int drawableId = field.getInt(null);
-                EditText editText = getActivity().findViewById(drawableId);
-                editText.setText("1", TextView.BufferType.EDITABLE);
+                if (sud != null) {
+                    System.out.println(Arrays.deepToString(sud));
+                    TableLayout tl = getActivity().findViewById(R.id.sudoku);
+                    setGrid(sud, tl);
+//                    putNumbers(sud);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -236,7 +230,36 @@ public class MainFragment extends Fragment {
         }
     }
 
-    private static int[][] getSudoku(File file, TNumber[] tNumbers) {
+    public static void setGrid(int[][] sudoku, TableLayout tl) {
+        System.out.println(tl.getChildCount());
+        for (int i = 0; i < tl.getChildCount(); i++) {
+            View view = tl.getChildAt(i);
+            System.out.println("oka" + i);
+            if (view instanceof TableRow) {
+                TableRow tableRow = (TableRow) view;
+                System.out.println(tableRow.getChildCount() + "elements in a row");
+                for (int j = 0; j < tableRow.getChildCount(); j++) {
+                    if (sudoku[i][j] != 0) {
+                        View int_view = tableRow.getChildAt(j);
+                        System.out.println("Element " + i + " " + j);
+                        if (int_view instanceof EditText) {
+                            System.out.println("Set the value");
+                            EditText editText = (EditText) int_view;
+                            editText.setText(String.valueOf(sudoku[i][j]));
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    public static void SolveGrid(int[][] solved, TableLayout tl) {
+
+    }
+
+
+    public static int[][] getSudoku(File file, TNumber[] tNumbers) {
         int[][] sud = Scanner.scan(file.getAbsolutePath(), tNumbers);
         return sud;
     }

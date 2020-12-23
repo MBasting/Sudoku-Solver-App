@@ -7,7 +7,7 @@
     tools:context=".Solve_activity">
 
     <Button
-        android:id="@+id/my_rounded_button"
+        android:id="@+id/confirm_button"
         android:layout_width="260dp"
         android:layout_height="65dp"
         android:background="@drawable/btn_rounded_soft"
@@ -20,7 +20,7 @@
         app:layout_constraintRight_toRightOf="@+id/guideline1" />
 
     <Button
-        android:id="@+id/another"
+        android:id="@+id/try_again_button"
         android:layout_width="260dp"
         android:layout_height="65dp"
         android:background="@drawable/btn_rounded_soft"
@@ -97,7 +97,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -106,7 +105,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -115,7 +113,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -124,7 +121,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -133,7 +129,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -142,7 +137,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -151,7 +145,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -160,7 +153,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -169,7 +161,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -184,7 +175,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -193,7 +183,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -202,7 +191,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -211,7 +199,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -220,7 +207,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -229,7 +215,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -238,7 +223,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -247,7 +231,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -256,7 +239,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -271,7 +253,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -280,7 +261,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -289,7 +269,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -298,7 +277,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -307,7 +285,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -316,7 +293,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -325,7 +301,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -334,7 +309,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -343,7 +317,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -358,7 +331,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -367,7 +339,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -376,7 +347,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -385,7 +355,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -394,7 +363,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -403,7 +371,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -412,7 +379,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -421,7 +387,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -430,7 +395,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -445,7 +409,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -454,7 +417,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -463,7 +425,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -472,7 +433,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -481,7 +441,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -490,7 +449,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -499,7 +457,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -508,7 +465,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -517,7 +473,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -532,7 +487,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -541,7 +495,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -550,7 +503,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -559,7 +511,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -568,7 +519,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -577,7 +527,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -586,7 +535,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -595,7 +543,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -604,7 +551,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -619,7 +565,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -628,7 +573,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -637,7 +581,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -646,7 +589,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -655,7 +597,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -664,7 +605,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -673,7 +613,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -682,7 +621,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -691,7 +629,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -706,7 +643,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -715,7 +651,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -724,7 +659,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -733,7 +667,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -742,7 +675,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -751,7 +683,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -760,7 +691,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -769,7 +699,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -778,7 +707,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
@@ -793,7 +721,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -802,7 +729,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -811,7 +737,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -820,7 +745,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -829,7 +753,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -838,7 +761,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -847,7 +769,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -856,7 +777,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
 
                 <EditText
@@ -865,7 +785,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:inputType="number"
                     android:maxLength="1" />
             </TableRow>
 
