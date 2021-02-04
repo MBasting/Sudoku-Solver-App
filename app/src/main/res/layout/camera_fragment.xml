@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <Button
-        android:id="@+id/my_rounded_button"
+        android:id="@+id/take_picture"
         android:layout_width="260dp"
         android:layout_height="65dp"
         android:background="@drawable/btn_rounded"
@@ -48,11 +48,11 @@
         app:layout_constraintVertical_bias="0.6" />
 
     <Button
-        android:id="@+id/text1"
+        android:id="@+id/fill_in_sudoku"
         android:layout_width="260dp"
         android:layout_height="65dp"
         android:background="@drawable/btn_rounded"
-        android:text="Soduku's Solved"
+        android:text="Fill in Sudoku"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

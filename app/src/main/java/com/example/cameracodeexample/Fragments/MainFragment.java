@@ -21,18 +21,14 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cameracodeexample.R;
-import com.example.cameracodeexample.calc.Scanner;
-import com.example.cameracodeexample.calc.Solver;
+import com.example.cameracodeexample.calc.Sudoku_Scanner;
 import com.example.cameracodeexample.calc.TNumber;
 import com.example.cameracodeexample.utils.DataBaseHandler;
 
@@ -47,11 +43,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 public class MainFragment extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
-    Button text, text1;
+    Button take_picture, fill_sudoku;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private static final int MY_STORAGE_PERMISSION_CODE = 100;
     private static final String map = "/saved_images";
@@ -98,8 +93,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.camera_fragment,container,false);
        // imageView =view. findViewById(R.id.imageView1);
-        text = view.findViewById(R.id.my_rounded_button);
-        text1 = view.findViewById(R.id.text1);
+        take_picture = view.findViewById(R.id.take_picture);
+        fill_sudoku = view.findViewById(R.id.fill_in_sudoku);
         databaseHandler = new DataBaseHandler(getContext());
         try {
             setNumbers();
@@ -107,37 +102,35 @@ public class MainFragment extends Fragment {
             System.out.println("Something went wrong trying to load reference images");
             e.printStackTrace();
         }
-        text.setOnClickListener(
+        take_picture.setOnClickListener(
                 new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-                {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
-                }
-                if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_STORAGE_PERMISSION_CODE);
-                }
-                else
-                {
-                    String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-                    File myDir = new File(root + "/saved_images");
-                    if (!myDir.exists()) {
-                        myDir.mkdirs();
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onClick(View v) {
+                        if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                        {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+                        }
+                        if(getActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_STORAGE_PERMISSION_CODE);
+                        }
+                        String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
+                        File myDir = new File(root + "/saved_images");
+                        if (!myDir.exists()) {
+                            myDir.mkdirs();
+                        }
+                        System.out.println("Created folder!");
+                        SolveFragment solveFragment = new SolveFragment();
+                        replaceFragment(solveFragment);
+                        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, CAMERA_REQUEST);
                     }
-                    SolveFragment solveFragment = new SolveFragment();
-                    replaceFragment(solveFragment);
-                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
-                }
-            }
-        });
+                });
 
-        text1.setOnClickListener(new View.OnClickListener() {
+        fill_sudoku.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new LocalFragment());
+                replaceFragment(new SolveFragment());
             }
         });
        return view;
@@ -213,11 +206,8 @@ public class MainFragment extends Fragment {
                 theImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                 outputStream.flush();
                 outputStream.close();
-                System.out.println();
-                File file1 = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, "test_1.jpg");
-                int[][] sud = getSudoku(file1, tNumbers);
+                int[][] sud = getSudoku(file, tNumbers);
                 if (sud != null) {
-                    System.out.println(Arrays.deepToString(sud));
                     TableLayout tl = getActivity().findViewById(R.id.sudoku);
                     setGrid(sud, tl);
 //                    putNumbers(sud);
@@ -231,19 +221,14 @@ public class MainFragment extends Fragment {
     }
 
     public static void setGrid(int[][] sudoku, TableLayout tl) {
-        System.out.println(tl.getChildCount());
         for (int i = 0; i < tl.getChildCount(); i++) {
             View view = tl.getChildAt(i);
-            System.out.println("oka" + i);
             if (view instanceof TableRow) {
                 TableRow tableRow = (TableRow) view;
-                System.out.println(tableRow.getChildCount() + "elements in a row");
                 for (int j = 0; j < tableRow.getChildCount(); j++) {
                     if (sudoku[i][j] != 0) {
                         View int_view = tableRow.getChildAt(j);
-                        System.out.println("Element " + i + " " + j);
                         if (int_view instanceof EditText) {
-                            System.out.println("Set the value");
                             EditText editText = (EditText) int_view;
                             editText.setText(String.valueOf(sudoku[i][j]));
                         }
@@ -251,16 +236,11 @@ public class MainFragment extends Fragment {
                 }
             }
         }
-
-    }
-
-    public static void SolveGrid(int[][] solved, TableLayout tl) {
-
     }
 
 
     public static int[][] getSudoku(File file, TNumber[] tNumbers) {
-        int[][] sud = Scanner.scan(file.getAbsolutePath(), tNumbers);
+        int[][] sud = Sudoku_Scanner.scan(file.getAbsolutePath(), tNumbers);
         return sud;
     }
 

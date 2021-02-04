@@ -97,7 +97,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number12"
@@ -105,7 +106,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number13"
@@ -113,7 +115,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number14"
@@ -121,7 +124,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number15"
@@ -129,7 +133,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number16"
@@ -137,7 +142,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number17"
@@ -145,7 +151,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number18"
@@ -153,7 +160,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number19"
@@ -161,7 +169,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -175,7 +184,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number22"
@@ -183,7 +193,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number23"
@@ -191,7 +202,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number24"
@@ -199,7 +211,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number25"
@@ -207,7 +220,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number26"
@@ -215,7 +229,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number27"
@@ -223,7 +238,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number28"
@@ -231,7 +247,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number29"
@@ -239,7 +256,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -253,7 +271,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number32"
@@ -261,7 +280,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number33"
@@ -269,7 +289,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number34"
@@ -277,7 +298,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number35"
@@ -285,7 +307,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number36"
@@ -293,7 +316,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number37"
@@ -301,7 +325,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number38"
@@ -309,7 +334,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number39"
@@ -317,7 +343,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -331,7 +358,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number42"
@@ -339,7 +367,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number43"
@@ -347,7 +376,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number44"
@@ -355,7 +385,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number45"
@@ -363,7 +394,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number46"
@@ -371,7 +403,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number47"
@@ -379,7 +412,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number48"
@@ -387,7 +421,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number49"
@@ -395,7 +430,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -409,7 +445,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number52"
@@ -417,7 +454,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number53"
@@ -425,7 +463,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number54"
@@ -433,7 +472,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number55"
@@ -441,7 +481,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number56"
@@ -449,7 +490,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number57"
@@ -457,7 +499,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number58"
@@ -465,7 +508,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number59"
@@ -473,7 +517,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -487,7 +532,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number62"
@@ -495,7 +541,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number63"
@@ -503,7 +550,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number64"
@@ -511,7 +559,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number65"
@@ -519,7 +568,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number66"
@@ -527,7 +577,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number67"
@@ -535,7 +586,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number68"
@@ -543,7 +595,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number69"
@@ -551,7 +604,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -565,7 +619,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number72"
@@ -573,7 +628,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number73"
@@ -581,7 +637,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number74"
@@ -589,7 +646,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number75"
@@ -597,7 +655,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number76"
@@ -605,7 +664,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number77"
@@ -613,7 +673,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number78"
@@ -621,7 +682,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number79"
@@ -629,7 +691,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -643,7 +706,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number82"
@@ -651,7 +715,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number83"
@@ -659,7 +724,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number84"
@@ -667,7 +733,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number85"
@@ -675,7 +742,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number86"
@@ -683,7 +751,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number87"
@@ -691,7 +760,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number88"
@@ -699,7 +769,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number89"
@@ -707,7 +778,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
             <TableRow
@@ -721,7 +793,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number92"
@@ -729,7 +802,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number93"
@@ -737,7 +811,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number94"
@@ -745,7 +820,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number95"
@@ -753,7 +829,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number96"
@@ -761,7 +838,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number97"
@@ -769,7 +847,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number98"
@@ -777,7 +856,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
 
                 <EditText
                     android:id="@+id/number99"
@@ -785,7 +865,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:autofillHints="no"
-                    android:maxLength="1" />
+                    android:maxLength="1"
+                    android:inputType="number"/>
             </TableRow>
 
         </TableLayout>

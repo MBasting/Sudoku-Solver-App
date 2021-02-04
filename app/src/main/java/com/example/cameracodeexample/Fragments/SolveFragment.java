@@ -35,6 +35,7 @@ import java.util.Arrays;
 
 public class SolveFragment extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
+    private boolean confirmed = false;
     Button confirm;
     Button retry;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
@@ -47,20 +48,26 @@ public class SolveFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_solve_activity, container, false);
         confirm = view.findViewById(R.id.confirm_button);
-        confirm.setOnClickListener( new View.OnClickListener() {
-
+        View.OnClickListener confirmListiner = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TableLayout tl = getActivity().findViewById(R.id.sudoku);
-                int[][] sud = getElementsTable();
-                int[][] solved = Solver.solve(sud);
-                if (solved == null) {
-                    System.out.println("Unsolvable");
+                if (confirmed) {
+                    replaceFragment(new MainFragment());
                 } else {
-                    MainFragment.setGrid(solved, tl);
+                    TableLayout tl = getActivity().findViewById(R.id.sudoku);
+                    int[][] sud = getElementsTable();
+                    int[][] solved = Solver.solve(sud);
+                    if (solved == null) {
+                        System.out.println("Unsolvable");
+                    } else {
+                        MainFragment.setGrid(solved, tl);
+                        confirm.setText("Return");
+                        confirmed = true;
+                    }
                 }
-            }
-        });
+
+            }};
+        confirm.setOnClickListener( confirmListiner);
         retry = view.findViewById(R.id.try_again_button);
         retry.setOnClickListener(  new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -75,11 +82,6 @@ public class SolveFragment extends Fragment {
                 }
                 else
                 {
-                    String root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString();
-                    File myDir = new File(root + "/saved_images");
-                    if (!myDir.exists()) {
-                        myDir.mkdirs();
-                    }
                     SolveFragment solveFragment = new SolveFragment();
                     replaceFragment(solveFragment);
                     Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -146,9 +148,7 @@ public class SolveFragment extends Fragment {
                 theImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                 outputStream.flush();
                 outputStream.close();
-                System.out.println();
-                File file1 = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, "test_1.jpg");
-                int[][] sud = MainFragment.getSudoku(file1, MainFragment.tNumbers);
+                int[][] sud = MainFragment.getSudoku(file, MainFragment.tNumbers);
                 if (sud != null) {
                     System.out.println(Arrays.deepToString(sud));
                     TableLayout tl = getActivity().findViewById(R.id.sudoku);
