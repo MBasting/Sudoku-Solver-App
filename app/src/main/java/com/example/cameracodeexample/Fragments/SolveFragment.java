@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -141,10 +142,11 @@ public class SolveFragment extends Fragment {
                 System.out.println("Storage not mounted");
                 return;
             }
+
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, name);
             FileOutputStream outputStream = null;
             try {
-                outputStream = new FileOutputStream(file, true);
+                outputStream = new FileOutputStream(file);
                 theImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                 outputStream.flush();
                 outputStream.close();
