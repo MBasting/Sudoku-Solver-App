@@ -15,6 +15,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,8 +31,10 @@ import com.example.cameracodeexample.calc.Solver;
 import com.example.cameracodeexample.utils.DataBaseHandler;
 
 import java.io.File;
+import java.nio.file.*;
 import java.io.FileOutputStream;
 import java.lang.reflect.Field;
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class SolveFragment extends Fragment {
@@ -129,7 +132,7 @@ public class SolveFragment extends Fragment {
      * @param resultCode
      * @param data
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
@@ -142,7 +145,6 @@ public class SolveFragment extends Fragment {
                 System.out.println("Storage not mounted");
                 return;
             }
-
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, name);
             FileOutputStream outputStream = null;
             try {
@@ -152,10 +154,10 @@ public class SolveFragment extends Fragment {
                 outputStream.close();
                 int[][] sud = MainFragment.getSudoku(file, MainFragment.tNumbers);
                 if (sud != null) {
-                    System.out.println(Arrays.deepToString(sud));
                     TableLayout tl = getActivity().findViewById(R.id.sudoku);
                     MainFragment.setGrid(sud, tl);
-//                    putNumbers(sud);
+                } else {
+                    System.out.println("NO SUDOKU FOUND");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

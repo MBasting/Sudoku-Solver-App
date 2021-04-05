@@ -47,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
     DataBaseHandler databaseHandler;
     private SQLiteDatabase db;
     Bitmap theImage;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Fragment fragment = new MainFragment();
+        this.fragment = new MainFragment();
         loadFragment(fragment);
         OpenCVLoader.initDebug();
 //        setContentView(R.layout.camera_fragment);
@@ -94,6 +95,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.mainframeLayout, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!(this.fragment != null && this.fragment.isVisible())) {
+            super.onBackPressed();
+        }
     }
 
 //    private void setDataToDataBase() {

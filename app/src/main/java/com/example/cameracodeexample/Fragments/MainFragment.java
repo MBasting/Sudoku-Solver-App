@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 
 public class MainFragment extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
@@ -88,6 +89,7 @@ public class MainFragment extends Fragment {
 
 
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -118,8 +120,8 @@ public class MainFragment extends Fragment {
                         File myDir = new File(root + "/saved_images");
                         if (!myDir.exists()) {
                             myDir.mkdirs();
+                            System.out.println("Created folder");
                         }
-                        System.out.println("Created folder!");
                         SolveFragment solveFragment = new SolveFragment();
                         replaceFragment(solveFragment);
                         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -202,15 +204,17 @@ public class MainFragment extends Fragment {
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + map, name);
             FileOutputStream outputStream = null;
             try {
-                outputStream = new FileOutputStream(file, true);
+                outputStream = new FileOutputStream(file, false);
                 theImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
                 outputStream.flush();
                 outputStream.close();
                 int[][] sud = getSudoku(file, tNumbers);
                 if (sud != null) {
+                    System.out.println(Arrays.deepToString(sud));
                     TableLayout tl = getActivity().findViewById(R.id.sudoku);
                     setGrid(sud, tl);
-//                    putNumbers(sud);
+                } else {
+                    System.out.println("NO SUDOKU FOUND");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -241,6 +245,8 @@ public class MainFragment extends Fragment {
 
     public static int[][] getSudoku(File file, TNumber[] tNumbers) {
         int[][] sud = Sudoku_Scanner.scan(file.getAbsolutePath(), tNumbers);
+        System.out.println(sud);
+        System.out.println(Arrays.deepToString(sud));
         return sud;
     }
 

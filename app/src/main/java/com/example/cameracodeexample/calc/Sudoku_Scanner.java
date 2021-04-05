@@ -111,7 +111,6 @@ public class Sudoku_Scanner {
                 save = a;
             }
         }
-        System.out.println("Finished with one sudoku");
         MatOfPoint sud = contours.get(save);
         Rect rect = Imgproc.boundingRect(new MatOfPoint(sud.toArray()));
         return gray.submat(rect);
@@ -137,7 +136,9 @@ public class Sudoku_Scanner {
             MatOfPoint p = contours1.get(i);
             Rect temprec = Imgproc.boundingRect(new MatOfPoint(p.toArray()));
             double parent = hierarchy1.get(0, i)[3];
-            if (parent > 2 && temprec.width > image_roi.size().width / 40 && temprec.height > image_roi.size().height / 17) {
+            double margin = image_roi.size().width / 11;
+            if (parent > 2 && image_roi.size().width / 40 < temprec.width && temprec.width < margin &&
+                    temprec.height > image_roi.size().height / 17 && temprec.height < margin) {
                 Mat numb_temp = image_roi.submat(temprec);
 
                 int posx = (int) ((temprec.x + 0.7*temprec.width) / (image_roi.size().width / 9));
@@ -219,10 +220,13 @@ public class Sudoku_Scanner {
         // Extract the numbers from the taken picture
         Mat sudoku = isolateSudoku(img);
         if (sudoku != null) {
+            System.out.println("Finished with 1 sudoku!");
             List<Isolated_Number> Isolated_Numbers = isolatenumbers(sudoku);
             return recognize_set(Isolated_Numbers, numbers);
+        } else {
+            System.out.println("COULD not recognize sudoku");
+            return null;
         }
-        return null;
     }
 
 
