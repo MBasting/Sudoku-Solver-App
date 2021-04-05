@@ -8,34 +8,24 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
-import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.cameracodeexample.MainActivity;
 import com.example.cameracodeexample.R;
 import com.example.cameracodeexample.calc.Solver;
-import com.example.cameracodeexample.utils.DataBaseHandler;
 
 import java.io.File;
-import java.nio.file.*;
 import java.io.FileOutputStream;
-import java.lang.reflect.Field;
-import java.sql.SQLOutput;
-import java.util.Arrays;
 
 public class SolveFragment extends Fragment {
     private static final int CAMERA_REQUEST = 1888;
@@ -132,7 +122,7 @@ public class SolveFragment extends Fragment {
      * @param resultCode
      * @param data
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
