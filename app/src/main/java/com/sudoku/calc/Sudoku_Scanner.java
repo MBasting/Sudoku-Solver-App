@@ -46,9 +46,9 @@ public class Sudoku_Scanner {
 //                img = img.submat(0, rows, middle - range, middle + range);
 //            }
 //        }
-        int width = 1080;
+        int height = 720;
         System.out.println("default rows/ columns: " + rows + " " + columns);
-        int height = (int) (rows / ((double)columns/ width));
+        int width = (int) (columns / ((double)rows/ height));
         System.out.println("height: " + height + "  width" + width);
         Size newsize = new Size(width, height);
         Imgproc.resize(img, img, newsize, 0, 0, Imgproc.INTER_AREA);
@@ -71,7 +71,6 @@ public class Sudoku_Scanner {
 
         Imgproc.Canny(blur, edged, 0, 50);
         Imgproc.dilate(edged, edged, Mat.ones(3, 3, CV_32F));
-//        showImage(edged);
         List<MatOfPoint> contours = new ArrayList<>();
         Mat hierarchy = new Mat();
         Imgproc.findContours(edged, contours, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
@@ -86,7 +85,7 @@ public class Sudoku_Scanner {
             Rect temprec = Imgproc.boundingRect(new MatOfPoint(temp.toArray()));
             double ratio = (double) temprec.width / temprec.height;
             // Add contour if certain height and square
-            if (temprec.height > 0.3 * gray.size().height && (int) Math.floor(ratio) == 1) {
+            if (temprec.height > 0.3 * gray.size().height && ratio > 0.8 && ratio < 1.2) {
                 possibile.add(index);
                 nr_of_sudokus++;
             }
@@ -125,26 +124,34 @@ public class Sudoku_Scanner {
         List<MatOfPoint> contours1 = new ArrayList<>();
         Mat hierarchy1 = new Mat();
         List<Isolated_Number> numbers = new ArrayList<>();
+        List<MatOfPoint> debug_numbers = new ArrayList<>();
+        Mat zeros = Mat.zeros(image_roi.size(), CV_8U);
         Imgproc.findContours(thresh, contours1, hierarchy1, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
         System.out.println("NUMBER OF CONTOURS FOUND: " + contours1.size());
+        Imgproc.drawContours(zeros, contours1, -1, new Scalar(255));
         // For each contour we have found in the image check its dimensions
-        for (int i = 0; i < contours1.size(); i++) {
-            MatOfPoint p = contours1.get(i);
+        int count = 0;
+        for (MatOfPoint p : contours1) {
             Rect temprec = Imgproc.boundingRect(new MatOfPoint(p.toArray()));
-            double parent = hierarchy1.get(0, i)[3];
-            double margin = image_roi.size().width / 8;
-            if (parent > 1 && image_roi.size().width / 40 < temprec.width && temprec.width < margin &&
-                    temprec.height > image_roi.size().height / 17 && temprec.height < margin) {
-                System.out.print("FOUND NUMBER???");
+            double margin = image_roi.size().width / 10;
+            // TODO: ARE THESE REALLY THE BEST VALUES TO CHOOSE
+            if (image_roi.size().width / 50 < temprec.width && temprec.width < margin &&
+                    temprec.height > image_roi.size().height / 25 && temprec.height < margin) {
+                debug_numbers.add(p);
                 Mat numb_temp = image_roi.submat(temprec);
 
-                int posx = (int) ((temprec.x + 0.7*temprec.width) / (image_roi.size().width / 9));
-                int posy = (int) ((temprec.y + 0.7*temprec.height) / (image_roi.size().height / 9));
+                // TODO: FIND OUT WHY IT IS 0.7
+                int posx = (int) ((temprec.x + 0.7 * temprec.width) / (image_roi.size().width / 9));
+                int posy = (int) ((temprec.y + 0.7 * temprec.height) / (image_roi.size().height / 9));
 
                 Isolated_Number temp = new Isolated_Number(posx, posy, numb_temp);
                 numbers.add(temp);
+                count++;
             }
         }
+        zeros = Mat.zeros(image_roi.size(), CV_8U);
+        Imgproc.drawContours(zeros, debug_numbers, -1, new Scalar(255));
+        System.out.println(count);
         return numbers;
     }
 
@@ -180,11 +187,17 @@ public class Sudoku_Scanner {
         }
         Mat thresh = new Mat(num.size(), CV_8U);
         Imgproc.threshold(num, thresh, 140, 255, Imgproc.THRESH_BINARY_INV);
+
         int width = (int) (((double) 70 / num.size().height) * num.size().width);
         if (width > 100) return 0;
         Imgproc.resize(thresh, thresh, new Size(60, 70));
-        Imgproc.morphologyEx(thresh, thresh, Imgproc.MORPH_OPEN, Mat.ones(3,3, CV_8U));
-        Imgproc.morphologyEx(thresh, thresh, Imgproc.MORPH_ERODE, Mat.ones(5,5, CV_8U));
+        Scalar sum1 = Core.sumElems(thresh);
+        int s1 = (int) sum1.val[0];
+        if (s1 > 350000) {
+            Imgproc.morphologyEx(thresh, thresh, Imgproc.MORPH_OPEN, Mat.ones(3,3, CV_8U));
+            Imgproc.morphologyEx(thresh, thresh, Imgproc.MORPH_ERODE, Mat.ones(5,5, CV_8U));
+        }
+
 
         int distance = Integer.MAX_VALUE;
         int label = 0;
@@ -199,9 +212,9 @@ public class Sudoku_Scanner {
                 distance = s;
             }
         }
-        if (distance > 300000) {
-            return 0;
-        }
+        //if (distance > 300000) {
+        //    return 0;
+        //}
         return label;
     }
 
